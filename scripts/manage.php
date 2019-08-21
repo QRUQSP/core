@@ -530,12 +530,16 @@ if( $browser == 'unsupported' ) {
     //
     // Check for the current help mode
     //
-    if( isset($config['ciniki.core']['help.mode']) 
-        && $config['ciniki.core']['help.mode'] == 'online' 
-        && isset($config['ciniki.core']['help.url']) 
-        ) {
-        $manage_config['helpMode'] = 'online';
-        $manage_config['helpURL'] = $config['ciniki.core']['help.url'];
+    if( isset($config['ciniki.core']['help.mode']) ) {
+        if( $config['ciniki.core']['help.mode'] == 'internal' ) {
+            $manage_config['helpMode'] = 'internal';
+            if( isset($config['ciniki.core']['help.url']) ) {
+                $manage_config['helpURL'] = $config['ciniki.core']['help.url'];
+            }
+        } elseif( $config['ciniki.core']['help.mode'] == 'online' && isset($config['ciniki.core']['help.url']) ) {
+            $manage_config['helpMode'] = 'online';
+            $manage_config['helpURL'] = $config['ciniki.core']['help.url'];
+        }
     }
 
     //
@@ -725,11 +729,13 @@ Javscript must be enabled for this application to work.
         </div>
     </div>
 </div>
-<?php if( $start_container == 'm_help' ) { ?>
-<div id="m_help" class="guided-off">
-<?php } else { ?>
-<div id="m_help" style="display:none;" class="guided-off">
-<?php } ?>
+<?php 
+if( $start_container == 'm_help' ) { 
+    print "<div id='m_help' class='guided-off {$manage_config['helpMode']}'>";
+} else {
+    print "<div id='m_help' style='display:none;' class='guided-off {$manage_config['helpMode']}'>";
+}
+?>
     <table id="mh_header" class="headerbar" cellspacing="0" cellpadding="0">
         <tr>
         <td id="mh_leftbuttons_0" class="leftbuttons hide"></td>
