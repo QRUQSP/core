@@ -693,6 +693,7 @@ Javscript must be enabled for this application to work.
 <?php } ?>
     <div id="me_content">
         <div id="mc_content_wrap" class="medium">
+            <p><br/><br/></p>
             <p>Oops, we seem to have hit a snag.</p>
             <p><br/></p>
             <h2></h2>
@@ -701,12 +702,19 @@ Javscript must be enabled for this application to work.
                 </tbody>
             </table>
             <p><br/></p>
+            <?php if( file_exists(dirname($ciniki['config']['ciniki.core']['root_dir']) . '/.blackbox') ) { ?>
+            <p></p>
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tr><td><input type="submit" value="Close" class="button" style="width: 100%" onclick="M.hide('m_error');"/></td>
+            </table>
+            <?php } else { ?>
             <p>If you don't understand why you encountered the error, please click the Submit Bug button.</p>
             <p><br/></p>
             <table width="100%" cellspacing="0" cellpadding="0">
                 <tr><td><input type="submit" value="Close" class="button" onclick="M.hide('m_error');"/></td>
                 <td style="text-align:right;"><input type="submit" value="Submit Bug" class="button" onclick="M.submitErrBug();"/></td></tr>
             </table>
+            <?php } ?>
         </div>
     </div>
 </div>
