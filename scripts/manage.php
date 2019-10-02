@@ -466,6 +466,13 @@ if( file_exists("$themes_root/default/colors.css") ) {
 
 print "<link rel='stylesheet' type='text/css' href='$manage_themes/default/print.css' media='print' />\n";
 
+//
+// Check for customized style, used for setting background colour in dev environment
+//
+if( file_exists(dirname($ciniki_root) . '/manage.css') ) {
+    print "<style type='text/css'>" . file_get_contents(dirname($ciniki_root) . '/manage.css') . "</style>\n";
+}
+
 ?>
 </head>
 <?php 
@@ -530,6 +537,7 @@ if( $browser == 'unsupported' ) {
     //
     // Check for the current help mode
     //
+    $manage_config['helpMode'] = 'internal';
     if( isset($config['ciniki.core']['help.mode']) ) {
         if( $config['ciniki.core']['help.mode'] == 'internal' ) {
             $manage_config['helpMode'] = 'internal';
