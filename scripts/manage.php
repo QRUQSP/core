@@ -737,7 +737,7 @@ Javscript must be enabled for this application to work.
                 </tbody>
             </table>
             <p><br/></p>
-            <table class="list simplebuttons noheader border">
+            <table class="list simplebuttons noheader border" cellspacing='0' cellpadding='0'>
                 <tr onclick="M.hide('m_alert');M.show('m_container');"><td class="button">Okay</td></tr>
             </table>
         </div>
