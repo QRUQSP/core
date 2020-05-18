@@ -701,15 +701,12 @@ Javscript must be enabled for this application to work.
 <?php } ?>
     <div id="me_content">
         <div id="mc_content_wrap" class="medium">
-            <p><br/><br/></p>
             <p>Oops, we seem to have hit a snag.</p>
-            <p><br/></p>
             <h2></h2>
             <table class="list noheader border" cellspacing='0' cellpadding='0'>
                 <tbody id="me_error_list">
                 </tbody>
             </table>
-            <p><br/></p>
             <?php if( file_exists(dirname($ciniki['config']['ciniki.core']['root_dir']) . '/.blackbox') ) { ?>
             <p></p>
             <table width="100%" cellspacing="0" cellpadding="0">
@@ -718,9 +715,11 @@ Javscript must be enabled for this application to work.
             <?php } else { ?>
             <p>If you don't understand why you encountered the error, please click the Submit Bug button.</p>
             <p><br/></p>
-            <table width="100%" cellspacing="0" cellpadding="0">
-                <tr><td><input type="submit" value="Close" class="button" onclick="M.hide('m_error');"/></td>
-                <td style="text-align:right;"><input type="submit" value="Submit Bug" class="button" onclick="M.submitErrBug();"/></td></tr>
+            <table class="list simplebuttons noheader" cellspacing="0" cellpadding="0">
+                <tr onclick="M.hide('m_error');"><td class="button">Close</td></tr>
+            </table>
+            <table class="list simplebuttons noheader" cellspacing="0" cellpadding="0">
+                <tr onclick="M.submitErrBug();"><td class="button">Submit Bug</td></tr>
             </table>
             <?php } ?>
         </div>
@@ -732,8 +731,7 @@ Javscript must be enabled for this application to work.
 <div id="m_alert" style="display:none;">
 <?php } ?>
     <div id="m_alert_content">
-        <div id="mc_content_wrap" class="narrow">
-            <p><br/><br/></p>
+        <div id="mc_content_wrap" class="medium">
             <table class="list noheader border" cellspacing='0' cellpadding='0'>
                 <tbody id="m_alert_msg">
                 </tbody>
