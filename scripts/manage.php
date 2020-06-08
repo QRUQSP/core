@@ -547,6 +547,8 @@ if( $browser == 'unsupported' ) {
         } elseif( $config['ciniki.core']['help.mode'] == 'online' && isset($config['ciniki.core']['help.url']) ) {
             $manage_config['helpMode'] = 'online';
             $manage_config['helpURL'] = $config['ciniki.core']['help.url'];
+        } elseif( $config['ciniki.core']['help.mode'] == 'bugs' && isset($config['ciniki.core']['help.url']) ) {
+            $manage_config['helpMode'] = 'bugs';
         }
     }
 
